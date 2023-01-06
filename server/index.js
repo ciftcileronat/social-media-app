@@ -16,6 +16,11 @@ import postRoutes from "./routes/posts.js";
 import { register } from "./controllers/auth.js";
 import { createPost } from "./controllers/posts.js";
 
+/* FOR MOCK DATA INSERTION */
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import { users, posts } from "./data/index.js";
+
 import { verifyToken } from "./middleware/auth.js";
 
 /* CONFIGURATIONS */
@@ -62,6 +67,11 @@ mongoose
   })
   .then(() => {
     app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`));
+
+    /* DATA INSERTION
+      User.insertMany(users); 
+      Post.insertMany(posts);
+    */
   })
   .catch((err) => {
     console.log(`${err} did not connect`);
